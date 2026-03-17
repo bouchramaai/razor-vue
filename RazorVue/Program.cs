@@ -10,7 +10,6 @@ namespace RazorVue
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-            builder.Services.AddViteServices();
 
             var app = builder.Build();
 
@@ -24,8 +23,7 @@ namespace RazorVue
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseViteDevelopmentServer(true);
-
+  
             app.UseRouting();
 
             app.UseAuthorization();
