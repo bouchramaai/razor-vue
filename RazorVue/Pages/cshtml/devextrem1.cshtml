@@ -1,0 +1,31 @@
+﻿<div id="devextreme-app">
+
+    <h3>Add User</h3>
+
+    <div style="margin-bottom:20px">
+
+        <dx-text-box v-model:value="newUserName"
+                     placeholder="Enter user name"
+                     width="250">
+        </dx-text-box>
+
+        <dx-button text="Add User"
+                   type="success"
+                   style="margin-left:10px"
+                   v-on:click="addUser">
+        </dx-button>
+
+    </div>
+
+    <dx-data-grid :data-source="users"
+                  key-expr="id"
+                  :show-borders="true">
+
+        <dx-column data-field="id"></dx-column>
+        <dx-column data-field="name"></dx-column>
+
+    </dx-data-grid>
+
+</div>
+
+    <script type="module" src="http://localhost:5173/ts/devextrem1.ts"></script>

@@ -1,0 +1,30 @@
+﻿<h1>Vue Test Page</h1>
+
+<div id="exp1-app">
+
+    <h2>{{ title }}</h2>
+
+    <p>Counter: {{ count }}</p>
+
+    <button v-on:click="increment">Increment</button>
+    <button v-on:click="decrement">Decrement</button>
+
+    <hr>
+
+    <h3>Add User</h3>
+
+    <input v-model="newUserName" placeholder="User name" />
+    <button v-on:click="addUser">Add User</button>
+
+    <p>Total Users: {{ userCount }}</p>
+
+    <ul>
+        <li v-for="user in users" :key="user.id">
+            {{ user.name }}
+            <button v-on:click="removeUser(user.id)">Delete</button>
+        </li>
+    </ul>
+
+</div>
+
+<script type="module" src="http://localhost:5173/ts/exp1.ts"></script>
