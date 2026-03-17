@@ -24,7 +24,7 @@ namespace RazorVue
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseViteDevelopmentServer();
+            app.UseViteDevelopmentServer(true);
 
             app.UseRouting();
 
