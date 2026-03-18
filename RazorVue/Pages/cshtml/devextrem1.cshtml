@@ -4,7 +4,7 @@
 
     <div style="margin-bottom:20px">
 
-        <dx-text-box v-model:value="newUserName"
+        <dx-text-box v-model:value="devextrem1.state.newUserName"
                      placeholder="Enter user name"
                      width="250">
         </dx-text-box>
@@ -12,12 +12,12 @@
         <dx-button text="Add User"
                    type="success"
                    style="margin-left:10px"
-                   v-on:click="addUser">
+                   v-on:click="devextrem1.addUser">
         </dx-button>
 
     </div>
 
-    <dx-data-grid :data-source="users"
+    <dx-data-grid :data-source="devextrem1.state.users"
                   key-expr="id"
                   :show-borders="true">
 
@@ -27,5 +27,3 @@
     </dx-data-grid>
 
 </div>
-
-    <script type="module" src="http://localhost:5173/ts/devextrem1.ts"></script>

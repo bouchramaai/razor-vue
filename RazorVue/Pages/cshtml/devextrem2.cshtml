@@ -1,0 +1,60 @@
+﻿<div id="devextreme2-app">
+
+    <h2>User Management</h2>
+
+    <dx-button text="Add User"
+               type="success"
+               icon="add"
+               v-on:click="devextrem2.openAddPopup">
+    </dx-button>
+
+    <br /><br />
+
+    <dx-data-grid :data-source="devextrem2.state.users"
+                  key-expr="id"
+                  :show-borders="true"
+                  :column-auto-width="true">
+
+        <dx-column data-field="id" caption="ID" :width="80"></dx-column>
+        <dx-column data-field="name" caption="Name"></dx-column>
+        <dx-column data-field="email" caption="Email"></dx-column>
+
+        <dx-column type="buttons">
+            <dx-button name="edit" @@click ="devextrem2.editUser"></dx-button>
+            <dx-button name="delete" @@click ="devextrem2.deleteUser"></dx-button>
+        </dx-column>
+
+    </dx-data-grid>
+
+    <!-- Popup -->
+    <dx-popup :visible="devextrem2.state.popupVisible"
+              title="User"
+              :width="400"
+              :height="300"
+              :show-close-button="true"
+              @@hiding ="devextrem2.closePopup">
+
+        <div style="padding:10px">
+
+            <dx-text-box v-model:value="devextrem2.state.currentUser.name"
+                         placeholder="Name">
+            </dx-text-box>
+
+            <br />
+
+            <dx-text-box v-model:value="devextrem2.state.currentUser.email"
+                         placeholder="Email">
+            </dx-text-box>
+
+            <br />
+
+            <dx-button text="Save"
+                       type="success"
+                       v-on:click="devextrem2.saveUser">
+            </dx-button>
+
+        </div>
+
+    </dx-popup>
+
+</div>

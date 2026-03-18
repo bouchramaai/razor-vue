@@ -1,11 +1,18 @@
 ﻿@page
+
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-@await Html.PartialAsync("cshtml/exp1")
+<div id="vue-root">
 
-<hr>
+    @await Html.PartialAsync("cshtml/devextrem2")
+    
+    @await Html.PartialAsync("cshtml/exp1")
 
-@await Html.PartialAsync("cshtml/devextrem1")
+    @await Html.PartialAsync("cshtml/devextrem1")
+
+</div>
+
+<script type="module" src="http://localhost:5173/main.ts"></script>

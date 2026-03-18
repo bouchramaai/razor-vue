@@ -1,78 +1,47 @@
-﻿import { createApp } from "vue"
+﻿import { reactive } from "vue"
 
-type User = {
-    id: number
-    name: string
-}
+class Exp1 {
 
-createApp({
+    state = reactive({
+        title: "Vue Test Page",
+        count: 0,
+        newUserName: "",
+        users: [
+            { id: 1, name: "Anna" },
+            { id: 2, name: "Tom" }
+        ]
+    })
 
-    data() {
-        return {
-
-            title: "Vue Test Page",
-            count: 0,
-
-            newUserName: "",
-
-            users: [
-                { id: 1, name: "Anna" },
-                { id: 2, name: "Tom" }
-            ] as User[]
-
-        }
-    },
-
-    computed: {
-
-        userCount(): number {
-            return this.users.length
-        }
-
-    },
-
-    methods: {
-
-        increment() {
-            this.count++
-        },
-
-        decrement() {
-            this.count--
-        },
-
-        addUser() {
-
-            if (!this.newUserName) return
-
-            const newUser: User = {
-                id: Date.now(),
-                name: this.newUserName
-            }
-
-            this.users.push(newUser)
-
-            this.newUserName = ""
-
-        },
-
-        removeUser(id: number) {
-
-            const result: User[] = []
-
-            for (let i = 0; i < this.users.length; i++) {
-
-                const u = this.users[i]
-
-                if (u.id !== id) {
-                    result.push(u)
-                }
-
-            }
-
-            this.users = result
-
-        }
+    init() {
+        // optional
     }
 
-}).mount("#exp1-app")
+    increment() {
+        this.state.count++
+    }
+
+    decrement() {
+        this.state.count--
+    }
+
+    addUser() {
+        if (!this.state.newUserName) return
+
+        this.state.users.push({
+            id: Date.now(),
+            name: this.state.newUserName
+        })
+
+        this.state.newUserName = ""
+    }
+
+    removeUser(id: number) {
+        this.state.users = this.state.users.filter(u => u.id !== id)
+    }
+
+    get userCount() {
+        return this.state.users.length
+    }
+}
+
+export const exp1 = new Exp1()

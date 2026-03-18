@@ -1,49 +1,27 @@
-﻿import { createApp } from "vue"
-import "devextreme/dist/css/dx.light.css"
+﻿import { reactive } from "vue"
 
-import DxButton from "devextreme-vue/button"
-import DxTextBox from "devextreme-vue/text-box"
-import DxDataGrid, { DxColumn } from "devextreme-vue/data-grid"
+class Devextrem1 {
 
-const app = createApp({
+    state = reactive({
+        newUserName: "",
+        users: [
+            { id: 1, name: "Anna" },
+            { id: 2, name: "Tom" }
+        ]
+    })
 
-    data() {
-        return {
+    init() { }
 
-            newUserName: "",
+    addUser() {
+        if (!this.state.newUserName) return
 
-            users: [
-                { id: 1, name: "Anna" },
-                { id: 2, name: "Tom" }
-            ]
+        this.state.users.push({
+            id: Date.now(),
+            name: this.state.newUserName
+        })
 
-        }
-    },
-
-    methods: {
-
-        addUser() {
-
-            if (!this.newUserName) return
-
-            const newUser = {
-                id: Date.now(),
-                name: this.newUserName
-            }
-
-            this.users = [...this.users, newUser]
-
-            this.newUserName = ""
-
-        }
-
+        this.state.newUserName = ""
     }
+}
 
-})
-
-app.component("DxButton", DxButton)
-app.component("DxTextBox", DxTextBox)
-app.component("DxDataGrid", DxDataGrid)
-app.component("DxColumn", DxColumn)
-
-app.mount("#devextreme-app")
+export const devextrem1 = new Devextrem1()
